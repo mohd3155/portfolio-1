@@ -45,7 +45,7 @@ const Header = () => {
           >
             Projects
           </Box>
-          {/* <Box
+          <Box
             component={Link}
             to="/resume"
             sx={{ textDecoration: "none", color: "black" }}
@@ -54,11 +54,11 @@ const Header = () => {
           </Box>
           <Box
             component={Link}
-            to="/"
+            to="/contact"
             sx={{ textDecoration: "none", color: "black" }}
           >
             Contact
-          </Box> */}
+          </Box>
         </Box>
       </Box>
     </Box>
