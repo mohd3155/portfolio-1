@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 
@@ -5,9 +6,9 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <div id="main">
+      <Box component="div" id="main" sx={{ minWidth: "100%" }}>
         <Outlet />
-      </div>
+      </Box>
     </>
   );
 };

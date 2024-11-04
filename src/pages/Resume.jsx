@@ -36,7 +36,7 @@ const Resume = () => {
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        justifyContent: { xs: "center", sm: "flex-start", xl: "center" },
         alignItems: "center",
       }}
     >
@@ -50,6 +50,7 @@ const Resume = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          marginTop: { xs: "24px", sm: "24px" },
         }}
       >
         <Typography
@@ -57,7 +58,7 @@ const Resume = () => {
           variant="h1"
           sx={{
             textAlign: "center",
-            fontSize: 150,
+            fontSize: { xs: 50, sm: 80, lg: 150, xl: 150 },
             WebkitTextStroke: "1px #dee2e6",
             color: "transparent",
             fontFamily: "Roboto",
@@ -74,13 +75,21 @@ const Resume = () => {
             position: "absolute",
             color: "#0BCEAF",
             fontWeight: "900",
+            fontSize: { xs: 25, sm: 30, lg: 50 },
           }}
         >
           EXPERIENCE
         </Typography>
       </Box>
       {/* ....................................................................... */}
-      <Box component="div" sx={{ width: "50%", minHeight: "70%" }}>
+      <Box
+        component="div"
+        sx={{
+          width: { xs: "100%", sm: "80%", lg: "50%", xl: "50%" },
+          minHeight: "70%",
+          marginTop: { sm: "24px" },
+        }}
+      >
         <Typography
           variant="h5"
           sx={{
@@ -88,6 +97,7 @@ const Resume = () => {
             color: "#343a40",
             marginBottom: "24px",
             fontSize: "32px",
+            marginLeft: { xs: "24px" },
           }}
         >
           My Expericence
@@ -110,6 +120,7 @@ const Resume = () => {
                     color: "#0BCEAF",
                     fontWeight: 700,
                     marginBottom: "10px",
+                    fontSize: { xs: "22px" },
                   }}
                 >
                   {exp.name}

@@ -11,7 +11,7 @@ const About = () => {
       sx={{
         width: "100%",
         height: "100vh",
-        paddingY: "40px",
+        paddingY: { xs: "none", md: "40px", lg: "40px" },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -22,7 +22,7 @@ const About = () => {
         component="div"
         sx={{
           width: "100%",
-          minHeight: "30%",
+          minHeight: { xs: "10%", lg: "30%" },
           position: "relative",
           display: "flex",
           justifyContent: "center",
@@ -34,7 +34,7 @@ const About = () => {
           variant="h1"
           sx={{
             textAlign: "center",
-            fontSize: 150,
+            fontSize: { xs: 80, lg: 150 },
             WebkitTextStroke: "1px #dee2e6",
             color: "transparent",
             fontFamily: "Roboto",
@@ -60,15 +60,30 @@ const About = () => {
 
       <Box
         component="div"
-        sx={{ width: "80%", minHeight: "70%", display: "flex" }}
+        sx={{
+          width: { xs: "100%", lg: "80%" },
+          minHeight: "70%",
+          display: "flex",
+          flexDirection: { xs: "column", lg: "row" },
+        }}
       >
         {/* ....................... */}
-        <Box component="div" sx={{ width: "40%", height: "100%" }}>
+        <Box
+          component="div"
+          sx={{
+            width: { xs: "100%", lg: "40%" },
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: { xs: "16px" },
+          }}
+        >
           <Box
             component="img"
             src={image}
             sx={{
-              width: "95%",
+              width: { xs: "95%", md: "50%", lg: "95%" },
               minHeight: "100%",
               paddingX: "15px",
               objectFit: "cover",
@@ -80,7 +95,7 @@ const About = () => {
         <Box
           component="div"
           sx={{
-            width: "60%",
+            width: { xs: "100%", lg: "60%" },
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -88,11 +103,21 @@ const About = () => {
         >
           <Box
             component="div"
-            sx={{ width: "100%", height: "85%", paddingX: "15px" }}
+            sx={{
+              width: { xs: "100%", md: "50%", lg: "100%" },
+              height: "85%",
+              paddingX: "15px",
+            }}
           >
             <Typography
               variant="h4"
-              sx={{ marginBottom: "24px", color: "#343a40", fontWeight: 700 }}
+              sx={{
+                marginBottom: "24px",
+                color: "#343a40",
+                fontWeight: 700,
+                width: { xs: "100%" },
+                fontSize: { xs: "1.5rem", md: "2rem" },
+              }}
             >
               Frontend Web Developer
             </Typography>
@@ -118,20 +143,30 @@ const About = () => {
                 component="div"
                 sx={{
                   display: "flex",
+                  flexDirection: { xs: "column", md: "row", lg: "row" },
                   justifyContent: "space-between",
                   width: "100%",
                 }}
               >
                 <Typography
                   variant="p"
-                  sx={{ width: "50%", marginBottom: "24px" }}
+                  sx={{
+                    width: { xs: "100%", lg: "50%" },
+                    marginBottom: "24px",
+                  }}
                 >
                   Name:{" "}
                   <Box component="span" sx={{ color: "#6c757d" }}>
                     Mohammed Hussein
                   </Box>
                 </Typography>
-                <Typography variant="p" sx={{ width: "50%" }}>
+                <Typography
+                  variant="p"
+                  sx={{
+                    width: { xs: "100%", lg: "50%" },
+                    marginBottom: "24px",
+                  }}
+                >
                   Birthday:{" "}
                   <Box component="span" sx={{ color: "#6c757d" }}>
                     30 December 1995
@@ -142,17 +177,30 @@ const About = () => {
                 component="div"
                 sx={{
                   display: "flex",
+                  flexDirection: { xs: "column", md: "row", lg: "row" },
                   justifyContent: "space-between",
                   width: "100%",
                 }}
               >
-                <Typography variant="p" sx={{ width: "50%" }}>
+                <Typography
+                  variant="p"
+                  sx={{
+                    width: { xs: "100%", lg: "50%" },
+                    marginBottom: "24px",
+                  }}
+                >
                   Phone:{" "}
                   <Box component="span" sx={{ color: "#6c757d" }}>
                     +20 101 527 9596
                   </Box>
                 </Typography>
-                <Typography variant="p" sx={{ width: "50%" }}>
+                <Typography
+                  variant="p"
+                  sx={{
+                    width: { xs: "100%", lg: "50%" },
+                    marginBottom: "24px",
+                  }}
+                >
                   Email:{" "}
                   <Box component="span" sx={{ color: "#6c757d" }}>
                     mohmd.itti@gmail.com
@@ -166,7 +214,7 @@ const About = () => {
             <Box
               component="div"
               sx={{
-                marginTop: "24px",
+                marginTop: { xs: "0", lg: "24px" },
                 width: "100%",
                 display: "flex",
                 justifyContent: "center",

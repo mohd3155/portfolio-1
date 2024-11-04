@@ -46,7 +46,7 @@ const Projects = () => {
           variant="h1"
           sx={{
             textAlign: "center",
-            fontSize: 150,
+            fontSize: { xs: 50, md: 120, lg: 150, xl: 150 },
             WebkitTextStroke: "1px #dee2e6",
             color: "transparent",
             fontFamily: "Roboto",
@@ -63,7 +63,13 @@ const Projects = () => {
             position: "absolute",
             color: "#0BCEAF",
             fontWeight: "900",
-            fontSize: "40px",
+            fontSize: {
+              xs: "16px",
+              sm: "20px",
+              md: "30px",
+              lg: "40px",
+              xl: "40px",
+            },
           }}
         >
           MY PORTFOLIO
@@ -86,8 +92,9 @@ const Projects = () => {
               className="card"
               sx={{
                 width: "80%",
-                height: "300px",
+                minHeight: "300px",
                 display: "flex",
+                flexDirection: { xs: "column", xl: "row" },
                 alignItems: "center",
                 marginBottom: "32px",
               }}
@@ -96,7 +103,7 @@ const Projects = () => {
               <Box
                 component="div"
                 className="cardImg"
-                sx={{ width: "40%", height: "100%" }}
+                sx={{ width: { xs: "100%", xl: "40%" }, height: "100%" }}
               >
                 <Box
                   component="img"
@@ -108,7 +115,7 @@ const Projects = () => {
                 component="div"
                 className="cardInfo"
                 sx={{
-                  width: "60%",
+                  width: { xs: "100%", xl: "60%" },
                   height: "90%",
                   display: "flex",
                   flexDirection: "column",
@@ -118,17 +125,32 @@ const Projects = () => {
                 }}
               >
                 <Typography
-                  sx={{ fontSize: "30px", fontWeight: 900, color: "#0BCEAF" }}
+                  sx={{
+                    fontSize: { xs: "20px", xl: "30px" },
+                    marginY: { xs: "16px" },
+                    fontWeight: 900,
+                    color: "#0BCEAF",
+                  }}
                 >
                   {project.name}
                 </Typography>
                 <Typography
-                  sx={{ fontSize: "20px", fontWeight: 900, color: "#6c757d" }}
+                  sx={{
+                    fontSize: "20px",
+                    marginY: { xs: "16px" },
+                    fontWeight: 900,
+                    color: "#6c757d",
+                  }}
                 >
                   {project.description}
                 </Typography>
                 <Typography
-                  sx={{ fontSize: "16px", fontWeight: 500, color: "#6c757d" }}
+                  sx={{
+                    fontSize: "16px",
+                    marginY: { xs: "16px" },
+                    fontWeight: 500,
+                    color: "#6c757d",
+                  }}
                 >
                   {project.technologies}
                 </Typography>

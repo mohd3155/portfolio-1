@@ -1,11 +1,17 @@
-import { Box, Typography, Button } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Button,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { keyframes } from "@emotion/react";
 import image from "../assets/image.jpg";
 import About from "./About";
 
 const typing = keyframes`
   from { width: 0; }
-  to { width: 75%; }
+  
 `;
 
 const blinkCaret = keyframes`
@@ -14,6 +20,22 @@ const blinkCaret = keyframes`
 `;
 
 const Home = () => {
+  const theme = useTheme();
+
+  // Define breakpoints for each screen size
+  const isXs = useMediaQuery(theme.breakpoints.only("xs"));
+  const isSm = useMediaQuery(theme.breakpoints.only("sm"));
+  const isMd = useMediaQuery(theme.breakpoints.only("md"));
+  const isLg = useMediaQuery(theme.breakpoints.only("lg"));
+  const isXl = useMediaQuery(theme.breakpoints.only("xl"));
+
+  // Set width based on the active breakpoint
+  let responsiveWidth;
+  if (isXs) responsiveWidth = "100%";
+  else if (isSm) responsiveWidth = "55%";
+  else if (isMd) responsiveWidth = "51%";
+  else if (isLg) responsiveWidth = "100%";
+  else if (isXl) responsiveWidth = "87%";
   return (
     <>
       <Box
@@ -32,33 +54,46 @@ const Home = () => {
           component="section"
           sx={{
             width: "95%",
-            height: "90%",
+            height: { xs: "100%", lg: "90%" },
             display: "flex",
-            justifyContent: "center",
+            justifyContent: { xs: "center", lg: "center" },
             alignItems: "center",
           }}
         >
           <Box
             component="div"
             sx={{
-              width: "80%",
-              height: "70%",
+              width: { xs: "100%", lg: "80%" },
+              height: { xs: "90%", lg: "100%" },
               display: "flex",
-              justifyContent: "space-between",
+              flexDirection: { xs: "column", xl: "row" },
+              justifyContent: { xs: "center", lg: "space-between" },
               alignItems: "center",
             }}
           >
-            <Box component="div" sx={{ height: "100%", width: "50%" }}>
+            <Box
+              component="div"
+              sx={{
+                height: { xs: "70%", lg: "100%" },
+                width: { xs: "100%", md: "70%", lg: "50%", xl: "50%" },
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
               <Box
                 component="img"
                 src={image}
-                sx={{ width: "90%", height: "100%", borderRadius: "50%" }}
+                sx={{
+                  width: { xs: "90%", md: "90%", lg: "90%", xl: "100%" },
+                  height: { xs: "90%", md: "90%", lg: "90%", xl: "90%" },
+                  borderRadius: "50%",
+                }}
               />
             </Box>
             <Box
               component="section"
               sx={{
-                width: "60%",
+                width: { xs: "100%", lg: "60%" },
                 height: "100%",
                 display: "flex",
                 justifyContent: "center",
@@ -69,13 +104,18 @@ const Home = () => {
                 component="section"
                 sx={{
                   width: "100%",
-                  height: "70%",
+                  height: { xs: "70%", md: "90%", lg: "70%" },
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
+                  alignItems: "center",
                 }}
               >
-                <Typography component="h1" variant="h5" sx={{ color: "white" }}>
+                <Typography
+                  component="h1"
+                  variant="h5"
+                  sx={{ color: "white", fontSize: "2rem" }}
+                >
                   I'm
                 </Typography>
                 <Typography
@@ -83,7 +123,7 @@ const Home = () => {
                   variant="h3"
                   sx={{
                     color: "transparent",
-                    fontSize: "6rem",
+                    fontSize: { xs: "3rem", md: "4rem", lg: "4rem" },
                     fontWeight: "bold",
                     WebkitTextStroke: "2px white",
                   }}
@@ -100,14 +140,20 @@ const Home = () => {
                     whiteSpace: "nowrap",
                     letterSpacing: ".10em",
                     animation: `${typing} 3.5s steps(30, end) infinite, ${blinkCaret} 0.75s step-end infinite`,
-                    width: "75%",
+                    width: responsiveWidth,
+                    fontSize: {
+                      xs: "1.4rem",
+                      md: "2rem",
+                      lg: "3rem",
+                      xl: "2.5rem",
+                    },
                   }}
                 >
                   FrontEnd Web Developer
                 </Typography>
                 <Button
                   sx={{
-                    width: "25%",
+                    width: { xs: "50%", md: "25%", lg: "25%" },
                     height: "50px",
                     color: "white",
                     border: 1,

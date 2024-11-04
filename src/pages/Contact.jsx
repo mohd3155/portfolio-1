@@ -5,7 +5,7 @@ const Contact = () => {
     <Box
       component="div"
       sx={{
-        height: "100vh",
+        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -18,11 +18,12 @@ const Contact = () => {
         component="div"
         sx={{
           width: "100%",
-          height: "30%",
+          height: { xs: "50%", xl: "30%" },
           position: "relative",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          marginBottom: { xs: "24px" },
         }}
       >
         <Typography
@@ -30,7 +31,7 @@ const Contact = () => {
           variant="h1"
           sx={{
             textAlign: "center",
-            fontSize: 150,
+            fontSize: { xs: 50, sm: 80, lg: 150, xl: 150 },
             WebkitTextStroke: "1px #dee2e6",
             color: "transparent",
             fontFamily: "Roboto",
@@ -47,6 +48,7 @@ const Contact = () => {
             position: "absolute",
             color: "#0BCEAF",
             fontWeight: "900",
+            fontSize: { xs: 25, sm: 30, md: 35, lg: 50 },
           }}
         >
           CONTACT ME
@@ -67,7 +69,7 @@ const Contact = () => {
           component="form"
           className="sec"
           sx={{
-            width: "45%",
+            width: { xs: "95%", lg: "60%", xl: "45%" },
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -78,6 +80,7 @@ const Contact = () => {
             sx={{
               width: "100%",
               display: "flex",
+              flexDirection: { xs: "column", md: "row", xl: "row" },
               justifyContent: "space-between",
               marginBottom: "16px",
             }}
@@ -85,7 +88,10 @@ const Contact = () => {
             <TextField
               label="Your Name"
               variant="outlined"
-              sx={{ width: "48%" }}
+              sx={{
+                width: { xs: "100%", md: "48%", xl: "48%" },
+                marginBottom: { xs: "16px" },
+              }}
               InputProps={{
                 sx: {
                   borderRadius: 10,
@@ -95,7 +101,7 @@ const Contact = () => {
             <TextField
               label="Your Email"
               variant="outlined"
-              sx={{ width: "48%" }}
+              sx={{ width: { xs: "100%", md: "48%", xl: "48%" } }}
               InputProps={{
                 sx: {
                   borderRadius: 10,
@@ -127,7 +133,7 @@ const Contact = () => {
           <Button
             variant="outlined"
             sx={{
-              width: "25%",
+              width: { xs: "50%", sm: "30%", xl: "25%" },
               height: "50px",
               borderColor: "#0BCEAF",
               color: "#0BCEAF",

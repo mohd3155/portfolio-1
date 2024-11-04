@@ -19,13 +19,18 @@ const Header = () => {
     >
       <Box
         component="nav"
-        sx={{ width: "80%", display: "flex", justifyContent: "center" }}
+        sx={{
+          width: { xs: "90%", sm: "80%" },
+          display: "flex",
+          justifyContent: "center",
+        }}
       >
         <Box
           component="ul"
           sx={{
             display: "flex",
-            width: "50%",
+            flexDirection: { xs: "column", sm: "row" },
+            width: { xs: "90%", lg: "50%" },
             justifyContent: "space-between",
             listStyle: "none",
             padding: 0,
