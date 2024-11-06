@@ -1,7 +1,16 @@
-import { Box, useMediaQuery, useTheme } from "@mui/material";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Box, Button, useMediaQuery, useTheme } from "@mui/material";
+import { Link, useParams } from "react-router-dom";
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const params = useParams();
+  console.log(params);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
   const theme = useTheme();
 
   const isXs = useMediaQuery(theme.breakpoints.only("xs"));
@@ -23,21 +32,69 @@ const Header = () => {
         boxShadow: 2,
       }}
     >
-      <Box
-        component="nav"
-        sx={{
-          width: { xs: "90%", sm: "80%" },
-          height: { xs: "100%" },
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        {isXs ? (
-          <Box component="div" sx={{ height: { xs: "50px" } }}>
-            {" "}
-            hellllo
-          </Box>
-        ) : (
+      {isXs ? (
+        <Box
+          component="div"
+          sx={{
+            minHeight: "10%",
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Button
+            onClick={handleToggle}
+            variant="text"
+            sx={{
+              height: isOpen ? "20%" : "100%",
+              width: "100%",
+              color: "#0BCEAF",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {isOpen ? "X" : "Open"}
+          </Button>
+          {isOpen && (
+            <Box
+              component="div"
+              sx={{
+                width: "100%",
+                height: isOpen ? "80px" : "0px",
+                backgroundColor: "white",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-around",
+                alignItems: "center",
+              }}
+            >
+              {pages.map((page) => (
+                <Box
+                  component={Link}
+                  to={page === "Home" ? "/" : `/${page.toLowerCase()}`}
+                  sx={{
+                    textDecoration: "none",
+                    color: "black",
+                  }}
+                >
+                  {page}
+                </Box>
+              ))}
+            </Box>
+          )}
+        </Box>
+      ) : (
+        <Box
+          component="nav"
+          sx={{
+            width: { xs: "90%", sm: "80%" },
+            height: { xs: "100%" },
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <Box
             component="ul"
             sx={{
@@ -78,8 +135,8 @@ const Header = () => {
               Contact
             </Box>
           </Box>
-        )}
-      </Box>
+        </Box>
+      )}
     </Box>
   );
 };
