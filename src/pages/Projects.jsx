@@ -11,7 +11,7 @@ const Projects = () => {
       description:
         "a PWA e-commerce web application for a general store that sells a multitude of things, like women’s wear, men’s wear, accessories, makeup, bags, etc.",
       technologies:
-        "React.js, React-Router, React-Query, MUI, Backend Integration",
+        "React.js | React-Router | React-Query | MUI | Backend Integration",
       image: ecom,
       link: "https://github.com/TAP-SD-0624/frontend-final-1",
     },
@@ -20,7 +20,7 @@ const Projects = () => {
       name: "Progamming Languages Topics",
       description:
         "A website that shows most programming languages and technologies that used to build digital applications.",
-      technologies: "React.js, React-Router, tailwind",
+      technologies: "React.js | React-Router | tailwind",
       image: topics,
       link: "https://github.com/TAP-SD-0624/mohammed-hussein-project1",
     },

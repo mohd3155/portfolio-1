@@ -22,19 +22,19 @@ const blinkCaret = keyframes`
 const Home = () => {
   const theme = useTheme();
 
-  // Define breakpoints for each screen size
   const isXs = useMediaQuery(theme.breakpoints.only("xs"));
   const isSm = useMediaQuery(theme.breakpoints.only("sm"));
   const isMd = useMediaQuery(theme.breakpoints.only("md"));
   const isLg = useMediaQuery(theme.breakpoints.only("lg"));
   const isXl = useMediaQuery(theme.breakpoints.only("xl"));
 
-  // Set width based on the active breakpoint
+  console.log(isXs);
+
   let responsiveWidth;
   if (isXs) responsiveWidth = "100%";
-  else if (isSm) responsiveWidth = "55%";
+  else if (isSm) responsiveWidth = "43%";
   else if (isMd) responsiveWidth = "51%";
-  else if (isLg) responsiveWidth = "100%";
+  else if (isLg) responsiveWidth = "120%";
   else if (isXl) responsiveWidth = "87%";
   return (
     <>
@@ -75,17 +75,24 @@ const Home = () => {
               component="div"
               sx={{
                 height: { xs: "70%", lg: "100%" },
-                width: { xs: "100%", md: "70%", lg: "50%", xl: "50%" },
+                width: {
+                  xs: "100%",
+                  sm: "70%",
+                  md: "70%",
+                  lg: "50%",
+                  xl: "50%",
+                },
                 display: "flex",
                 justifyContent: "center",
+                alignItems: "center",
               }}
             >
               <Box
                 component="img"
                 src={image}
                 sx={{
-                  width: { xs: "90%", md: "90%", lg: "90%", xl: "100%" },
-                  height: { xs: "90%", md: "90%", lg: "90%", xl: "90%" },
+                  width: { xs: "90%", md: "90%", lg: "90%", xl: "80%" },
+                  height: { xs: "90%", md: "90%", lg: "90%", xl: "70%" },
                   borderRadius: "50%",
                 }}
               />
@@ -139,8 +146,8 @@ const Home = () => {
                     borderRight: "2px solid",
                     whiteSpace: "nowrap",
                     letterSpacing: ".10em",
-                    animation: `${typing} 3.5s steps(30, end) infinite, ${blinkCaret} 0.75s step-end infinite`,
                     width: responsiveWidth,
+                    animation: `${typing} 3.5s steps(30, end) infinite, ${blinkCaret} 0.75s step-end infinite`,
                     fontSize: {
                       xs: "1.4rem",
                       md: "2rem",

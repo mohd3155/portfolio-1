@@ -1,6 +1,51 @@
+import React, { useState } from "react";
+import Alert from "@mui/material/Alert";
+import CheckIcon from "@mui/icons-material/Check";
 import { Box, Typography, TextField, Button } from "@mui/material";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showFailure, setShowFailure] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .send(
+        "service_qa0hr1r",
+        "template_drz0bo3",
+        {
+          from_name: formData.name,
+          reply_to: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        "tcvV1gTcbx1CgoGzF"
+        // F
+      )
+      .then(
+        (result) => {
+          setShowSuccess(true);
+          setShowFailure(false);
+          setFormData({ name: "", email: "", subject: "", message: "" });
+        },
+        (error) => {
+          setShowSuccess(false);
+          setShowFailure(true);
+        }
+      );
+  };
+
   return (
     <Box
       component="div"
@@ -14,6 +59,21 @@ const Contact = () => {
       }}
     >
       {/* ........................................................ */}
+      {showSuccess && (
+        <Alert
+          icon={<CheckIcon fontSize="inherit" />}
+          severity="success"
+          onClose={() => setShowSuccess(false)} // Allow closing the alert
+        >
+          Message sent successfully!
+        </Alert>
+      )}
+
+      {showFailure && (
+        <Alert severity="error">
+          Failed to send message. Please try again.
+        </Alert>
+      )}
       <Box
         component="div"
         sx={{
@@ -67,6 +127,7 @@ const Contact = () => {
       >
         <Box
           component="form"
+          onSubmit={sendEmail}
           className="sec"
           sx={{
             width: { xs: "95%", lg: "60%", xl: "45%" },
@@ -87,7 +148,11 @@ const Contact = () => {
           >
             <TextField
               label="Your Name"
+              name="name"
               variant="outlined"
+              required
+              onChange={handleChange}
+              value={formData.name}
               sx={{
                 width: { xs: "100%", md: "48%", xl: "48%" },
                 marginBottom: { xs: "16px" },
@@ -100,6 +165,11 @@ const Contact = () => {
             />
             <TextField
               label="Your Email"
+              name="email"
+              type="email"
+              required
+              onChange={handleChange}
+              value={formData.email}
               variant="outlined"
               sx={{ width: { xs: "100%", md: "48%", xl: "48%" } }}
               InputProps={{
@@ -111,7 +181,11 @@ const Contact = () => {
           </Box>
           <TextField
             label="Subject"
+            name="subject"
+            required
             variant="outlined"
+            onChange={handleChange}
+            value={formData.subject}
             sx={{ marginBottom: "16px", width: "100%" }}
             InputProps={{
               sx: {
@@ -121,7 +195,11 @@ const Contact = () => {
           />
           <TextField
             label="Message"
+            name="message"
+            required
             multiline
+            onChange={handleChange}
+            value={formData.message}
             sx={{ marginBottom: "16px", width: "100%" }}
             InputProps={{
               sx: {
@@ -131,6 +209,7 @@ const Contact = () => {
             }}
           />
           <Button
+            type="submit"
             variant="outlined"
             sx={{
               width: { xs: "50%", sm: "30%", xl: "25%" },
