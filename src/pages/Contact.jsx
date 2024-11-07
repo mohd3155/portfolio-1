@@ -63,7 +63,7 @@ const Contact = () => {
         <Alert
           icon={<CheckIcon fontSize="inherit" />}
           severity="success"
-          onClose={() => setShowSuccess(false)} // Allow closing the alert
+          onClose={() => setShowSuccess(false)}
         >
           Message sent successfully!
         </Alert>
