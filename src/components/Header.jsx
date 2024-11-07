@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Box, Button, useMediaQuery, useTheme } from "@mui/material";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const params = useParams();
-  console.log(params);
+  const location = useLocation();
+  console.log(location);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -76,7 +76,15 @@ const Header = () => {
                   to={page === "Home" ? "/" : `/${page.toLowerCase()}`}
                   sx={{
                     textDecoration: "none",
-                    color: "black",
+                    color:
+                      location.pathname === "/" && page === "Home"
+                        ? "#0BCEAF"
+                        : location.pathname.includes(page.toLowerCase())
+                        ? "#0BCEAF"
+                        : "black",
+                    "&:hover": {
+                      color: "#0BCEAF",
+                    },
                   }}
                 >
                   {page}
@@ -106,34 +114,26 @@ const Header = () => {
               padding: 0,
             }}
           >
-            <Box
-              component={Link}
-              to="/"
-              sx={{ textDecoration: "none", color: "black" }}
-            >
-              Home
-            </Box>
-            <Box
-              component={Link}
-              to="/projects"
-              sx={{ textDecoration: "none", color: "black" }}
-            >
-              Projects
-            </Box>
-            <Box
-              component={Link}
-              to="/resume"
-              sx={{ textDecoration: "none", color: "black" }}
-            >
-              Resume
-            </Box>
-            <Box
-              component={Link}
-              to="/contact"
-              sx={{ textDecoration: "none", color: "black" }}
-            >
-              Contact
-            </Box>
+            {pages.map((page) => (
+              <Box
+                component={Link}
+                to={page === "Home" ? "/" : `/${page.toLowerCase()}`}
+                sx={{
+                  textDecoration: "none",
+                  color:
+                    location.pathname === "/" && page === "Home"
+                      ? "#0BCEAF"
+                      : location.pathname.includes(page.toLowerCase())
+                      ? "#0BCEAF"
+                      : "black",
+                  "&:hover": {
+                    color: "#0BCEAF",
+                  },
+                }}
+              >
+                {page}
+              </Box>
+            ))}
           </Box>
         </Box>
       )}
